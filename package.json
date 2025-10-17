@@ -1,7 +1,7 @@
 {
   "name": "doe-inteligente",
   "version": "2.0.0",
-  "description": "Plataforma de Doação Inteligente - React + Vue + TypeScript",
+  "description": "Plataforma de Doação Inteligente - React + TypeScript",
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
@@ -12,13 +12,13 @@
     "build:backend": "tsc --project tsconfig.server.json",
     "preview": "vite preview",
     "start": "node dist/server/index.js",
-    "lint": "eslint . --ext ts,tsx,vue --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@types/express": "^4.17.21",
     "@vitejs/plugin-react": "^4.2.1",
-    "@vitejs/plugin-vue": "^5.0.4",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -26,10 +26,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
-    "vue": "^3.4.21",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.0.0",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/node": "^20.11.30",
@@ -37,14 +38,15 @@
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "8.46.1",
     "@typescript-eslint/parser": "8.46.1",
+    "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "eslint-plugin-vue": "^9.22.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
-    "vite": "^5.2.0",
-    "vue-eslint-parser": "^9.4.2"
+    "vite": "^5.2.0"
   }
 }

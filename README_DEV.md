@@ -19,17 +19,17 @@ Este documento fornece uma visão técnica completa do projeto para desenvolvedo
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Frontend      │    │   Backend       │    │   Build Tools   │
-│   (React+Vue)   │◄──►│   (Express)     │    │   (Vite)        │
+│   (React)       │◄──►│   (Express)     │    │   (Vite)        │
 │   Port: 5173    │    │   Port: 3030    │    │   TypeScript    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
 ### Stack Tecnológica
 
-#### Frontend Híbrido
+#### Frontend
 - **React 18**: Framework principal para UI e roteamento
-- **Vue 3**: Componente especializado para mapa interativo
 - **TypeScript**: Tipagem estática em todo o frontend
+- **Tailwind CSS v4**: Estilização utilitária com diretiva `@config` no CSS
 - **Zustand**: Gerenciamento de estado global React
 - **React Router**: Roteamento SPA
 
@@ -42,34 +42,19 @@ Este documento fornece uma visão técnica completa do projeto para desenvolvedo
 
 #### Build & Development
 - **Vite**: Build tool e dev server com HMR
-- **ESLint**: Linting para TypeScript, React e Vue
+- **ESLint**: Linting para TypeScript e React
 - **Concurrently**: Execução paralela de scripts
 
-### Integração React + Vue
+### Mapa Interativo (React)
 
-O projeto implementa uma arquitetura única que combina React e Vue:
+O projeto utiliza um componente `MapaReact` com filtros e listagem de ONGs. Exemplo simplificado:
 
-```typescript
-// React (Host)
-const Mapa: React.FC = () => {
-  const mapContainerRef = useRef<HTMLDivElement>(null)
-  const vueAppRef = useRef<any>(null)
+```tsx
+import MapaReact from '@/components/MapaReact'
 
-  useEffect(() => {
-    // Monta aplicação Vue dentro do React
-    vueAppRef.current = createApp(MapaVue)
-    vueAppRef.current.mount(mapContainerRef.current)
-  }, [])
-
-  return <div ref={mapContainerRef} />
+export default function MapaPage() {
+  return <MapaReact />
 }
-
-// Vue (Guest)
-<template>
-  <div class="mapa-vue-container">
-    <!-- Componente Vue especializado -->
-  </div>
-</template>
 ```
 
 ## 🔄 Fluxo de Execução
@@ -85,7 +70,7 @@ graph TD
     E --> F[Router Setup]
     F --> G[Zustand Store Init]
     G --> H[Component Render]
-    H --> I[Vue Component Mount]
+    H --> I[Map Component (React)]
 ```
 
 ### 2. Fluxo de Requisições
@@ -99,7 +84,7 @@ User Action → React Component → API Call → Express Route → Response → 
 ```bash
 # 1. Desenvolvimento
 npm run dev          # Inicia dev servers
-# Hot reload automático para React e Vue
+# Hot reload automático para React
 
 # 2. Build
 npm run build        # Compila TypeScript + Vite build
@@ -116,7 +101,7 @@ src/
 ├── components/              # Componentes React reutilizáveis
 │   ├── Header.tsx          # Navegação principal
 │   ├── Footer.tsx          # Rodapé com links
-│   ├── MapaVue.vue         # Componente Vue para mapa
+│   ├── MapaReact.tsx       # Componente React para mapa
 │   └── NotificationSystem.tsx # Sistema de notificações
 ├── pages/                  # Páginas da aplicação (React)
 │   ├── Home.tsx           # Página inicial
@@ -138,7 +123,7 @@ src/
 ### Convenções de Nomenclatura
 
 - **Componentes React**: PascalCase (`Header.tsx`)
-- **Componentes Vue**: PascalCase (`MapaVue.vue`)
+
 - **Páginas**: PascalCase (`Home.tsx`)
 - **Stores**: camelCase (`appStore.ts`)
 - **Types**: PascalCase para interfaces (`interface User`)

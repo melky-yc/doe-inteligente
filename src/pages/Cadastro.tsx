@@ -8,6 +8,17 @@ interface FormErrors {
   [key: string]: string
 }
 
+// Adiciona tipo explícito para o estado do formulário de doador
+type DoadorFormState = {
+  nome: string
+  email: string
+  telefone: string
+  endereco: string
+  tipoDoacao: Doador['tipoDoacao']
+  valorPreferido: string
+  frequencia: 'unica' | 'mensal' | 'trimestral' | 'anual'
+}
+
 const Cadastro: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('doador')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -15,14 +26,14 @@ const Cadastro: React.FC = () => {
   const { addNotification } = useAppStore()
 
   // Estado do formulário de doador
-  const [doadorForm, setDoadorForm] = useState({
+  const [doadorForm, setDoadorForm] = useState<DoadorFormState>({
     nome: '',
     email: '',
     telefone: '',
     endereco: '',
-    tipoDoacao: 'dinheiro' as const,
+    tipoDoacao: 'dinheiro',
     valorPreferido: '',
-    frequencia: 'unica' as const
+    frequencia: 'unica'
   })
 
   // Estado do formulário de ONG
@@ -427,7 +438,7 @@ const Cadastro: React.FC = () => {
                     className="form-select"
                     id="doador-frequencia"
                     value={doadorForm.frequencia}
-                    onChange={(e) => setDoadorForm(prev => ({ ...prev, frequencia: e.target.value as Doador['frequencia'] }))}
+                    onChange={(e) => setDoadorForm(prev => ({ ...prev, frequencia: e.target.value as NonNullable<Doador['frequencia']> }))}
                   >
                     {frequencias.map(freq => (
                       <option key={freq.value} value={freq.value}>
@@ -661,8 +672,8 @@ const Cadastro: React.FC = () => {
 
       <style>{`
         .hero-section {
-          background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-          color: white;
+          background: var(--gradient-hero);
+          color: var(--text-inverse);
           margin-top: -80px;
           padding-top: calc(var(--space-2xl) + 80px);
         }
@@ -681,7 +692,7 @@ const Cadastro: React.FC = () => {
         .hero-section h1 {
           font-size: 2.5rem;
           margin-bottom: var(--space-md);
-          color: white;
+          color: var(--text-inverse);
         }
         
         .hero-section p {
@@ -724,8 +735,8 @@ const Cadastro: React.FC = () => {
         }
         
         .tab.active {
-          background-color: var(--primary);
-          color: white;
+          background-color: var(--color-primary);
+          color: var(--text-inverse);
         }
         
         .form-panel {
@@ -772,7 +783,7 @@ const Cadastro: React.FC = () => {
         }
         
         .checkbox-item input[type="checkbox"]:checked + .checkbox-label {
-          color: var(--primary);
+          color: var(--color-primary);
           font-weight: 500;
         }
         

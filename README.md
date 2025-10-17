@@ -6,8 +6,8 @@ Uma plataforma moderna que conecta doadores e ONGs em Teresina, facilitando doa�
 
 ### Frontend
 - **React 18** - Biblioteca principal para UI
-- **Vue 3** - Componente de mapa interativo
 - **TypeScript** - Tipagem estática
+- **Tailwind CSS v4** - Estilização utilitária com diretiva `@config` no CSS
 - **React Router** - Roteamento SPA
 - **Zustand** - Gerenciamento de estado
 - **Vite** - Build tool e dev server
@@ -34,7 +34,7 @@ Doe_Inteligente/
 │   ├── components/          # Componentes React reutilizáveis
 │   │   ├── Header.tsx       # Cabeçalho com navegação
 │   │   ├── Footer.tsx       # Rodapé
-│   │   ├── MapaVue.vue      # Componente Vue para mapa
+│   │   ├── MapaReact.tsx    # Componente React para mapa
 │   │   └── NotificationSystem.tsx # Sistema de notificações
 │   ├── pages/               # Páginas da aplicação
 │   │   ├── Home.tsx         # Página inicial
@@ -112,7 +112,7 @@ npm run preview
 ### ✅ Implementadas
 - **Página Inicial**: Hero section, features, preview do mapa
 - **Sistema de Cadastro**: Formulários para doadores e ONGs
-- **Mapa Interativo**: Visualização de ONGs com filtros (Vue.js)
+- **Mapa Interativo**: Visualização de ONGs com filtros (React)
 - **Contato**: Formulário funcional com validação
 - **Navegação**: SPA com React Router
 - **Tema**: Suporte a modo claro/escuro
@@ -122,12 +122,8 @@ npm run preview
 - **API REST**: Endpoints para cadastro e contato
 - **Validação**: Frontend e backend com TypeScript
 
-### 🔄 Integração React + Vue
-O projeto demonstra uma integração única entre React e Vue:
-- **React**: Gerencia a aplicação principal, roteamento e estado
-- **Vue**: Componente especializado para o mapa interativo
-- **Comunicação**: Via props e eventos entre os frameworks
-- **Build**: Vite configurado para suportar ambos
+### 🔄 Mapa Interativo
+O projeto utiliza um componente React dedicado para o mapa, com filtros de causa e busca, detalhes de ONG e interação acessível.
 
 ## 🎨 Design System
 

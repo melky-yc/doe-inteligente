@@ -21,7 +21,6 @@ Este documento contém todos os procedimentos necessários para manter o projeto
 {
   "react": "^18.2.0",           // ⚠️ CRÍTICO - Framework principal
   "react-dom": "^18.2.0",      // ⚠️ CRÍTICO - Renderização DOM
-  "vue": "^3.4.21",             // ⚠️ CRÍTICO - Componente de mapa
   "react-router-dom": "^6.22.3" // ⚠️ CRÍTICO - Roteamento SPA
 }
 ```
@@ -48,8 +47,7 @@ Este documento contém todos os procedimentos necessários para manter o projeto
 {
   "vite": "^5.2.0",            // ⚠️ CRÍTICO - Build e dev server
   "typescript": "^5.4.2",      // ⚠️ CRÍTICO - Tipagem
-  "@vitejs/plugin-react": "^4.2.1", // ⚠️ CRÍTICO - Plugin React
-  "@vitejs/plugin-vue": "^5.0.4"    // ⚠️ CRÍTICO - Plugin Vue
+  "@vitejs/plugin-react": "^4.2.1" // ⚠️ CRÍTICO - Plugin React
 }
 ```
 
@@ -230,12 +228,7 @@ npm run build
 ```
 **Solução Permanente**: Otimizar imports e lazy loading
 
-### 2. Conflito React + Vue em Desenvolvimento
-**Sintoma**: Hot reload não funciona para componentes Vue
-**Solução**: Reiniciar servidor de desenvolvimento
-```bash
-npm run dev
-```
+
 
 ### 3. CORS em Produção
 **Sintoma**: Erro CORS em requests da API

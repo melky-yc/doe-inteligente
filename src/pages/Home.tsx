@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="container">
-          <div className="hero-content">
+          <div className="hero-content text-center">
             <div className="hero-visual" role="img" aria-label="Banner de destaque da plataforma">
               <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
                 <path 

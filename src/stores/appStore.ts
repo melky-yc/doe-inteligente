@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import type { Notification } from '@/types'
 
 interface AppState {
   theme: 'light' | 'dark'
@@ -9,14 +10,6 @@ interface AppState {
   setLoading: (loading: boolean) => void
   addNotification: (notification: Omit<Notification, 'id'>) => void
   removeNotification: (id: string) => void
-}
-
-interface Notification {
-  id: string
-  type: 'success' | 'error' | 'warning' | 'info'
-  title: string
-  message?: string
-  duration?: number
 }
 
 export const useAppStore = create<AppState>()(

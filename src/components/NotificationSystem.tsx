@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppStore } from '../stores/appStore'
+import type { Notification } from '@/types'
 
 const NotificationSystem: React.FC = () => {
   const { notifications, removeNotification } = useAppStore()
@@ -178,7 +179,7 @@ const NotificationSystem: React.FC = () => {
   )
 }
 
-const getNotificationIcon = (type: string): string => {
+const getNotificationIcon = (type: Notification['type']): string => {
   switch (type) {
     case 'success':
       return 'fa-solid fa-check'

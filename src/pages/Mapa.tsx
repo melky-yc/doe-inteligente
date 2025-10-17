@@ -1,27 +1,7 @@
-import React, { useEffect, useRef } from 'react'
-import { createApp, type App } from 'vue'
-import MapaVue from '../components/MapaVue.vue'
+import React from 'react'
+import MapaReact from '../components/MapaReact'
 
 const Mapa: React.FC = () => {
-  const mapContainerRef = useRef<HTMLDivElement>(null)
-  const vueAppRef = useRef<App<Element> | null>(null)
-
-  useEffect(() => {
-    if (mapContainerRef.current && !vueAppRef.current) {
-      // Criar e montar a aplicação Vue dentro do contêiner
-      vueAppRef.current = createApp(MapaVue)
-      vueAppRef.current.mount(mapContainerRef.current)
-    }
-
-    return () => {
-      // Limpar Vue app on unmount
-      if (vueAppRef.current) {
-        vueAppRef.current.unmount()
-        vueAppRef.current = null
-      }
-    }
-  }, [])
-
   return (
     <div className="mapa-page">
       <section className="hero-section section-sm">
@@ -39,12 +19,10 @@ const Mapa: React.FC = () => {
       <section className="map-section section">
         <div className="container">
           <div className="map-container">
-            <div ref={mapContainerRef} className="vue-map-wrapper"></div>
+            <MapaReact />
           </div>
         </div>
       </section>
-
-      
     </div>
   )
 }

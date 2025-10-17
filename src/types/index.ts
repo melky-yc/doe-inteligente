@@ -92,3 +92,34 @@ export interface MapMarker {
   description?: string;
   type: 'ong' | 'doador';
 }
+
+// Tipos para solicitações de doação
+export type Urgencia = 'baixa' | 'media' | 'alta'
+
+export interface ItemSolicitado {
+  nome: string
+  quantidade: number
+  unidade?: string
+}
+
+export interface SolicitacaoDoacao {
+  id: string
+  ongId?: string
+  ongNome: string
+  titulo: string
+  itens: ItemSolicitado[]
+  urgencia: Urgencia
+  descricao?: string
+  criadaEm: Date
+  favorita?: boolean
+  compartilhavel?: boolean
+}
+
+// Adiciona tipo de Notification centralizado
+export interface Notification {
+  id: string
+  type: 'success' | 'error' | 'warning' | 'info'
+  title: string
+  message?: string
+  duration?: number
+}

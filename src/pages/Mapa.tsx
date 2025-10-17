@@ -8,13 +8,13 @@ const Mapa: React.FC = () => {
 
   useEffect(() => {
     if (mapContainerRef.current && !vueAppRef.current) {
-      // Create Vue app and mount it
+      // Criar e montar a aplicação Vue dentro do contêiner
       vueAppRef.current = createApp(MapaVue)
       vueAppRef.current.mount(mapContainerRef.current)
     }
 
     return () => {
-      // Cleanup Vue app when component unmounts
+      // Limpar Vue app on unmount
       if (vueAppRef.current) {
         vueAppRef.current.unmount()
         vueAppRef.current = null

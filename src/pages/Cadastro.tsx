@@ -14,7 +14,7 @@ const Cadastro: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({})
   const { addNotification } = useAppStore()
 
-  // Doador form state
+  // Estado do formulário de doador
   const [doadorForm, setDoadorForm] = useState({
     nome: '',
     email: '',
@@ -25,7 +25,7 @@ const Cadastro: React.FC = () => {
     frequencia: 'unica' as const
   })
 
-  // ONG form state
+  // Estado do formulário de ONG
   const [ongForm, setOngForm] = useState({
     nome: '',
     email: '',
@@ -169,7 +169,7 @@ const Cadastro: React.FC = () => {
           message: result.message || 'Doador cadastrado com sucesso!'
         })
         
-        // Reset form
+        // Reset formulario
         setDoadorForm({
           nome: '',
           email: '',
@@ -237,7 +237,7 @@ const Cadastro: React.FC = () => {
           message: result.message || 'ONG cadastrada com sucesso!'
         })
         
-        // Reset form
+        // Reset formulario
         setOngForm({
           nome: '',
           email: '',
@@ -389,7 +389,7 @@ const Cadastro: React.FC = () => {
 
                 <div className="form-group">
                   <label className="form-label" htmlFor="doador-tipo">
-                    Tipo de doação preferida *
+                    Tipo de doação *
                   </label>
                   <select
                     className="form-select"
@@ -409,7 +409,7 @@ const Cadastro: React.FC = () => {
                 {doadorForm.tipoDoacao === 'dinheiro' && (
                   <div className="form-group">
                     <label className="form-label" htmlFor="doador-valor">
-                      Valor preferido (R$)
+                      Valor (R$)
                     </label>
                     <input
                       className={`form-input ${errors.valorPreferido ? 'error' : ''}`}

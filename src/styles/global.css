@@ -105,7 +105,7 @@ body {
   padding: var(--space-2xl) 0;
 }
 
-/* Typography */
+/* Tipografia */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
@@ -145,7 +145,7 @@ a:hover {
   color: var(--primary-dark);
 }
 
-/* Buttons */
+/* Botoes */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -305,7 +305,7 @@ a:hover {
   font-size: 0.875rem;
 }
 
-/* Utilities */
+/* Utilidades */
 .text-center {
   text-align: center;
 }
@@ -390,7 +390,7 @@ a:hover {
   border: 0;
 }
 
-/* Animations */
+/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -442,7 +442,7 @@ a:hover {
   box-shadow: 0 8px 32px var(--shadow-lg);
 }
 
-/* Responsive */
+/* Responsividade  */
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--space-sm);
@@ -593,7 +593,7 @@ a:hover {
   .cta-actions { flex-direction: column; align-items: center; }
 }
 
-/* Dark theme adjustments */
+/* Dark theme adjustments (TESTE) */
 .app.dark .map-overlay {
   background: rgba(17, 24, 39, 0.9);
   box-shadow: 0 8px 32px var(--shadow-lg);
@@ -686,7 +686,7 @@ a:hover {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Contact Page (global) */
+/* Contato Page (global) */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -825,12 +825,12 @@ a:hover {
   text-align: center;
 }
 
-/* Contact & Hero Responsiveness */
+/* Contato & Hero Responsividade */
 @media (max-width: 1024px) {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
-    justify-items: center; /* centraliza cards no tablet/mobile */
+    justify-items: center; 
   }
 }
 

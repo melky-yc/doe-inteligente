@@ -124,7 +124,7 @@ const Contato: React.FC = () => {
   const handleInputChange = (field: keyof ContatoForm, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
     
-    // Clear error when user starts typing
+    // Apaga o erro quando o usuário começa a digitar
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }))
     }
@@ -207,7 +207,7 @@ const Contato: React.FC = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contato Formulario */}
             <div className="contact-form-container">
               <form className="contact-form card" onSubmit={handleSubmit}>
                 <h2>Envie sua Mensagem</h2>

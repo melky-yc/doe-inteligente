@@ -95,9 +95,6 @@ const Home: React.FC = () => {
                   Ver Mapa Completo
                 </Link>
               </div>
-              <div className="marker" style={{ left: '35%', top: '40%' }}></div>
-              <div className="marker" style={{ left: '60%', top: '50%' }}></div>
-              <div className="marker" style={{ left: '50%', top: '25%' }}></div>
             </div>
           </div>
         </div>

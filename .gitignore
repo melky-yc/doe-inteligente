@@ -1,1 +1,9 @@
 node_modules
+
+CHANGELOG.md
+README_DEV.md
+README_MAINTENANCE.md
+
+CACHE
+
+.ENV

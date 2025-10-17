@@ -289,12 +289,6 @@ const Cadastro: React.FC = () => {
             </div>
             <h1>Crie seu cadastro e faça a diferença</h1>
             <p>Junte-se à nossa comunidade e ajude a transformar vidas em Teresina</p>
-            <img
-              className="hero-image"
-              src="https://picsum.photos/1600/900?random=2"
-              alt="Voluntários organizando doações"
-              loading="lazy"
-            />
           </div>
         </div>
       </section>

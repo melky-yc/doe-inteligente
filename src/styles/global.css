@@ -432,15 +432,6 @@ a:hover {
   animation: spin 1s linear infinite;
 }
 
-/* Hero images */
-.hero-image {
-  width: 100%;
-  max-width: 900px;
-  margin: var(--space-lg) auto 0;
-  display: block;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 8px 32px var(--shadow-lg);
-}
 
 /* Responsividade  */
 @media (max-width: 768px) {

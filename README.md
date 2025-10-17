@@ -115,7 +115,7 @@ npm run preview
 - **Mapa Interativo**: Visualização de ONGs com filtros (Vue.js)
 - **Contato**: Formulário funcional com validação
 - **Navegação**: SPA com React Router
-- **Tema**: Suporte a modo claro/escuro
+- **Tema**: Suporte a modo claro/escuro (Modo Escuro em Desenvolvimento)
 - **Notificações**: Sistema de feedback visual
 - **Responsivo**: Design adaptável para mobile
 - **Acessibilidade**: ARIA labels, navegação por teclado
@@ -220,9 +220,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 
 ## 📞 Suporte
 
-- **Email**: contato@doeinteligente.org
-- **WhatsApp**: (+55 86) 99999-9999
-- **Instagram**: @doeinteligente
+- **Email**: melchisedeksl@gmail.com
+- **WhatsApp**: (+55 86) 99411-4087
+- **Instagram**: @melkyc_
 
 ---
 

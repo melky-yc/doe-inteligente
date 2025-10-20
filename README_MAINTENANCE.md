@@ -296,3 +296,50 @@ ls -la dist/client/assets/
 **Última atualização**: $(date)  
 **Responsável**: Equipe de DevOps  
 **Versão**: 2.0.0
+
+
+### 2. EADDRINUSE no backend (porta ocupada)
+**Sintoma**: Falha ao iniciar o Express com erro `listen EADDRINUSE: address already in use :::3030`.
+**Diagnóstico (Windows PowerShell)**:
+```powershell
+Get-NetTCPConnection -LocalPort 3030 | Format-Table LocalAddress,LocalPort,State,OwningProcess
+# ou
+netstat -ano | findstr :3030
+```
+**Solução**:
+```powershell
+# Encerrar processo pelo PID
+Stop-Process -Id <PID> -Force
+
+# Alternar porta temporariamente
+$env:PORT = 3031
+npm run dev:backend
+```
+
+### Atualizações e Procedimentos
+
+### Atualizar dependências com segurança
+```bash
+npm outdated          # listar pacotes desatualizados
+npm audit             # verificar vulnerabilidades
+npm audit fix         # aplicar correções não-breakings
+```
+
+### Processo de atualização
+```bash
+# 1. Atualizar dependências menores
+npm update
+
+# 2. Verificar build e tipos
+npm run type-check
+npm run build
+
+# 3. Smoke test (dev)
+npm run dev
+# Validar rotas: /, /mapa, /cadastro, /contato, /solicitacoes
+```
+
+### Release
+- Gerar build de produção: `npm run build`
+- Publicar artefatos: `dist/client` e `dist/server`
+- Reiniciar serviços/PM2 com zero-downtime

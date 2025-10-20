@@ -33,6 +33,17 @@ export interface ONG {
   };
   verificada: boolean;
   criadaEm?: Date;
+  // Novos campos para perfil expandido
+  logoUrl?: string;
+  bannerUrl?: string;
+  missao?: string;
+  visao?: string;
+  valores?: string[];
+  projetos?: string[];
+  transparencia?: {
+    relatorioAnual?: string;
+    certificacoes?: string[];
+  };
 }
 
 // Tipos para contato
@@ -100,6 +111,18 @@ export interface ItemSolicitado {
   nome: string
   quantidade: number
   unidade?: string
+  // Novos campos para doação parcial
+  quantidadeDoada?: number
+  doacoes?: DoacaoParcial[]
+}
+
+// Novo tipo para doações parciais
+export interface DoacaoParcial {
+  id: string
+  doadorNome: string
+  quantidade: number
+  dataDoacao: Date
+  status: 'reservado' | 'confirmado' | 'entregue'
 }
 
 export interface SolicitacaoDoacao {
@@ -113,6 +136,11 @@ export interface SolicitacaoDoacao {
   criadaEm: Date
   favorita?: boolean
   compartilhavel?: boolean
+  // Novos campos para progresso e ordenação
+  progresso?: number // 0-100, calculado automaticamente
+  dataAtualizacao?: Date
+  totalItens?: number
+  itensCompletos?: number
 }
 
 // Adiciona tipo de Notification centralizado
@@ -122,4 +150,41 @@ export interface Notification {
   title: string
   message?: string
   duration?: number
+}
+
+// Novos tipos para funcionalidades avançadas
+export interface FiltrosSolicitacoes {
+  busca?: string
+  item?: string
+  urgencia?: Urgencia | ''
+  favoritos?: boolean
+  ordenacao?: 'urgencia' | 'data' | 'progresso'
+  direcao?: 'asc' | 'desc'
+}
+
+export interface PaginacaoConfig {
+  pagina: number
+  limite: number
+  total: number
+  temProxima: boolean
+}
+
+export interface EstadoFavoritos {
+  [solicitacaoId: string]: boolean
+}
+
+export interface ConfiguracaoModal {
+  aberto: boolean
+  solicitacaoId?: string
+  tipo?: 'total' | 'parcial'
+}
+
+export interface DoacaoFormData {
+  doadorNome: string
+  email?: string
+  telefone?: string
+  itens: {
+    [itemNome: string]: number
+  }
+  observacoes?: string
 }

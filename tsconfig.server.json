@@ -12,17 +12,18 @@
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "outDir": "./dist",
-    "rootDir": "./src/server",
+    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@server/*": ["./src/server/*"]
     }
   },
   "include": [
-    "src/server/**/*.ts"
+    "src/server/**/*.ts",
+    "src/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

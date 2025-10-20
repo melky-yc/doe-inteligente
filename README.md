@@ -1,225 +1,67 @@
 # Plataforma de Doação Inteligente
 
-Uma plataforma moderna que conecta doadores e ONGs em Teresina, facilitando doações inteligentes e transparentes para causas sociais.
+Conecta doadores e ONGs de Teresina com transparência e praticidade. O projeto está estruturado em React + TypeScript (frontend) e Express + TypeScript (backend), com foco em qualidade, acessibilidade e uma experiência moderna.
 
-## 🚀 Tecnologias Utilizadas
+## Funcionalidades
+- Favoritos persistentes por solicitação.
+- Filtros: busca, item, urgência e favoritos.
+- Ordenação: `urgencia | data | progresso` com direção `asc | desc`.
+- Barras de progresso por solicitação e por item (cores dinâmicas conforme avanço).
+- Modal de doação parcial com seleção granular de itens, validação em tempo real e prevenção de quantidades inválidas.
+- UI responsiva, acessível, com notificações e tema claro/escuro.
 
-### Frontend
-- **React 18** - Biblioteca principal para UI
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS v4** - Estilização utilitária com diretiva `@config` no CSS
-- **React Router** - Roteamento SPA
-- **Zustand** - Gerenciamento de estado
-- **Vite** - Build tool e dev server
+## Rotas
+- `/` Home
+- `/mapa` Mapa interativo de ONGs (React)
+- `/cadastro` Formulários de cadastro de doador e ONG
+- `/contato` Contato e suporte
+- `/solicitacoes` Lista de solicitações com favoritos, filtros e doações
 
-### Backend
-- **Node.js** - Runtime JavaScript
-- **Express** - Framework web
-- **TypeScript** - Tipagem no backend
-- **Helmet** - Segurança HTTP
-- **Compression** - Compressão de resposta
-- **CORS** - Cross-Origin Resource Sharing
+## Requisitos
+- Node.js 18+
+- npm
 
-### Ferramentas de Desenvolvimento
-- **ESLint** - Linting de código
-- **Concurrently** - Execução paralela de scripts
-- **TSX** - Execução TypeScript
-- **Vite** - Hot Module Replacement
-
-## 📁 Estrutura do Projeto
-
-```
-Doe_Inteligente/
-├── src/
-│   ├── components/          # Componentes React reutilizáveis
-│   │   ├── Header.tsx       # Cabeçalho com navegação
-│   │   ├── Footer.tsx       # Rodapé
-│   │   ├── MapaReact.tsx    # Componente React para mapa
-│   │   └── NotificationSystem.tsx # Sistema de notificações
-│   ├── pages/               # Páginas da aplicação
-│   │   ├── Home.tsx         # Página inicial
-│   │   ├── Cadastro.tsx     # Formulários de cadastro
-│   │   ├── Mapa.tsx         # Página do mapa
-│   │   └── Contato.tsx      # Formulário de contato
-│   ├── stores/              # Gerenciamento de estado
-│   │   └── appStore.ts      # Store principal (Zustand)
-│   ├── styles/              # Estilos globais
-│   │   └── global.css       # CSS global com variáveis
-│   ├── types/               # Definições TypeScript
-│   │   └── index.ts         # Tipos da aplicação
-│   ├── server/              # Backend Express
-│   │   └── index.ts         # Servidor principal
-│   ├── main.tsx             # Ponto de entrada React
-│   └── App.tsx              # Componente raiz
-├── dist/                    # Build de produção
-├── public/                  # Arquivos estáticos
-├── vite.config.ts           # Configuração Vite
-├── tsconfig.json            # Config TypeScript (frontend)
-├── tsconfig.server.json     # Config TypeScript (backend)
-├── package.json             # Dependências e scripts
-└── README.md                # Documentação
-```
-
-## 🛠️ Instalação e Execução
-
-### Pré-requisitos
-- Node.js 18+ 
-- npm ou yarn
-
-### Instalação
+## Instalação e Desenvolvimento
 ```bash
-# Clone o repositório
-git clone <repository-url>
-cd Doe_Inteligente
-
-# Instale as dependências
 npm install
+npm run dev             # Frontend + Backend
+# ou
+npm run dev:frontend    # Vite (porta 5173, tenta 5174/5175 se ocupada)
+npm run dev:backend     # Express (porta 3030)
 ```
 
-### Desenvolvimento
+## Build e Preview
 ```bash
-# Inicia frontend (Vite) e backend (Express) simultaneamente
-npm run dev
-
-# Ou execute separadamente:
-npm run dev:frontend  # Frontend na porta 5173
-npm run dev:backend   # Backend na porta 3030
+npm run build           # dist/client + dist/server
+npm run preview         # serve dist/client
+npm start               # roda dist/server
 ```
 
-### Produção
-```bash
-# Build completo
-npm run build
+## Scripts úteis
+- `npm run type-check` — verificação de tipos sem emissão.
+- `npm run lint` — linting com regras de TS e React Hooks.
+- `npm run build:frontend` — `tsc` + `vite build`.
+- `npm run build:backend` — `tsc --project tsconfig.server.json`.
 
-# Inicia servidor de produção
-npm start
-```
+## Troubleshooting
+- Erro `EADDRINUSE` (porta 3030 em uso):
+  - Verifique processos: `Get-NetTCPConnection -LocalPort 3030 | Format-Table LocalAddress,LocalPort,State,OwningProcess`
+  - Finalize pelo PID: `Stop-Process -Id <PID> -Force`
+  - Use outra porta temporária: `$env:PORT = 3031; npm run dev:backend`
 
-### Outros Scripts
-```bash
-# Verificação de tipos
-npm run type-check
+## Documentação
+- Guia de desenvolvimento: `README_DEV.md`
+- Manual de manutenção: `README_MAINTENANCE.md`
 
-# Linting
-npm run lint
+## Atualizações recentes
+- Correções de tipos e lint: remoção de `any`, genéricos em `updateFiltro`, comparação de datas com `getTime()`.
+- Ajustes de build do backend: `rootDir` para `./src`, inclusão de `src/types`, e `noUnusedParameters=false`.
+- Modal de doação parcial criado e integrado.
+- UI refinada: favoritos persistentes, filtros/ordenação, barras de progresso, botões de doação separados.
 
-# Preview do build
-npm run preview
-```
-
-## 🌟 Funcionalidades
-
-### ✅ Implementadas
-- **Página Inicial**: Hero section, features, preview do mapa
-- **Sistema de Cadastro**: Formulários para doadores e ONGs
-- **Mapa Interativo**: Visualização de ONGs com filtros (React)
-- **Contato**: Formulário funcional com validação
-- **Navegação**: SPA com React Router
-- **Tema**: Suporte a modo claro/escuro
-- **Notificações**: Sistema de feedback visual
-- **Responsivo**: Design adaptável para mobile
-- **Acessibilidade**: ARIA labels, navegação por teclado
-- **API REST**: Endpoints para cadastro e contato
-- **Validação**: Frontend e backend com TypeScript
-
-### 🔄 Mapa Interativo
-O projeto utiliza um componente React dedicado para o mapa, com filtros de causa e busca, detalhes de ONG e interação acessível.
-
-## 🎨 Design System
-
-### Cores
-- **Primary**: #0066cc (Azul principal)
-- **Success**: #10b981 (Verde)
-- **Error**: #ef4444 (Vermelho)
-- **Warning**: #f59e0b (Amarelo)
-
-### Tipografia
-- **Fonte**: Poppins (Google Fonts)
-- **Pesos**: 400, 500, 600, 700
-
-### Componentes
-- **Botões**: Primary, Secondary, Outline, Danger
-- **Cards**: Elevação e hover effects
-- **Forms**: Validação visual e estados
-- **Grid**: Sistema responsivo
-
-## 🔧 Configuração
-
-### Variáveis de Ambiente
-```env
-PORT=3030                    # Porta do backend
-NODE_ENV=production          # Ambiente
-```
-
-### Proxy de Desenvolvimento
-O Vite está configurado para fazer proxy das requisições `/api/*` para o backend Express na porta 3030.
-
-## 📱 Responsividade
-
-- **Desktop**: Layout completo com sidebar
-- **Tablet**: Grid adaptável
-- **Mobile**: Menu hambúrguer, layout vertical
-
-## 🔒 Segurança
-
-- **Helmet**: Headers de segurança HTTP
-- **CORS**: Configurado para desenvolvimento
-- **Validação**: Sanitização de inputs
-- **CSP**: Content Security Policy configurado
-
-## 🚀 Performance
-
-- **Code Splitting**: Roteamento lazy
-- **Tree Shaking**: Vite otimização
-- **Compression**: Gzip no servidor
-- **Cache**: Headers apropriados
-- **Bundle Analysis**: Vite bundle analyzer
-
-## 🧪 Testes
-
-### Estrutura de Testes (Planejado)
-```bash
-# Testes unitários
-npm run test
-
-# Testes E2E
-npm run test:e2e
-
-# Coverage
-npm run test:coverage
-```
-
-## 📊 Monitoramento
-
-### Métricas Implementadas
-- **Logs**: Console estruturado
-- **Errors**: Tratamento centralizado
-- **Performance**: Vite dev tools
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## 👥 Equipe
-
-- **Desenvolvimento**: Plataforma de Doação Inteligente
-- **Design**: Sistema moderno e acessível
-- **Backend**: API REST com TypeScript
-
-## 📞 Suporte
-
-- **Email**: contato@doeinteligente.org
-- **WhatsApp**: (+55 86) 99999-9999
-- **Instagram**: @doeinteligente
+## Stack
+- Frontend: React 18, TypeScript, Vite, Tailwind CSS v4, Zustand, React Router.
+- Backend: Node.js, Express, Helmet, CORS, Compression.
 
 ---
-
-**Plataforma de Doação Inteligente** - Conectando doadores e ONGs para um mundo melhor! 💙
+Plataforma de Doação Inteligente — contribuindo com um impacto real na comunidade.
